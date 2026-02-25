@@ -13,10 +13,11 @@
 </head>
 <body>
 
-    <header>
+<header>
     <nav class="navbar">
-        <div class="logo-container">
-            <img src="velmorae-logo.png" class="main-logo" alt="Logo">
+        <div class="logo">
+            <img src="velmorae-logo.png" alt="Velmorae Studio Logo" class="brand-logo">
+        </div>
 
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -238,22 +239,24 @@ window.onclick = function(event) {
     }
 }
 
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    
-    // Animasi garis tiga jadi silang (Opsional)
-    hamburger.classList.toggle('toggle');
-});
-
-// Menutup menu saat salah satu link diklik (agar tidak menutupi layar)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+    hamburger.addEventListener('click', () => {
+        // Ini perintah untuk memunculkan/menyembunyikan menu
+        navLinks.classList.toggle('active');
+        
+        // Opsional: Animasi garis jadi silang
+        hamburger.classList.toggle('toggle');
     });
-});
+
+    // Supaya menu tertutup otomatis kalau kita klik link-nya
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
     </script>
 
     <a href="https://wa.me/6289653765707?text=Halo%20Velmorae%20Studio,%20saya%20tertarik%20dengan%20layanan%20branding/design." class="whatsapp-float" target="_blank">
