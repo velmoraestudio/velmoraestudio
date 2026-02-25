@@ -101,29 +101,29 @@ header {
 }
 
 .port-card {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
     background-size: cover;
     background-position: center;
-    cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    min-height: 250px;
+    transition: transform 0.4s ease;
 }
 
-/* Card Spanning */
-.port-card.tall { grid-row: span 2; }
-.port-card.wide { grid-column: span 2; }
+.port-card:hover {
+    transform: translateY(-5px); /* Efek melayang saat di-hover */
+}
 
-/* Luxury Overlay Effect */
 .port-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: flex-end;
-    padding: 30px;
+    padding: 25px;
     opacity: 0;
-    transition: 0.4s ease;
+    transition: 0.3s;
 }
 
 .port-card:hover .port-overlay {
@@ -412,3 +412,75 @@ footer { background: var(--primary); color: white; padding: 50px 10%; }
     from { transform: translateY(50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Ini yang bikin logo di kiri, menu di kanan */
+    align-items: center;
+    padding: 0 5%;
+    height: 80px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+ 
+}
+
+.main-logo {
+    height: 40px !important;    /* Kunci tinggi logo agar pas di navbar */
+    width: auto !important;      /* Biar lebarnya menyesuaikan (tidak gepeng) */
+    display: block;
+    object-fit: contain;        /* Memastikan gambar tetap dalam proporsi yang benar */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;            /* Kasih sedikit ruang atas-bawah */
+}
+
+/* Hamburger Menu (Default Hidden) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: 0.3s;
+}
+
+/* RESPONSIVE UNTUK HP (Mobile) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Munculkan garis tiga di HP */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: -100%; /* Sembunyikan menu di kanan luar layar */
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        transition: 0.5s;
+    }
+
+    .nav-links.active {
+        right: 0; /* Munculkan menu saat aktif */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+}
+
